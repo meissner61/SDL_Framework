@@ -1,8 +1,10 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <iostream>
 #include <SDL/SDL.h>
 #include <GL/glew.h>
+#include "Object.h"
 
 enum class GameState
 {
@@ -30,6 +32,10 @@ private:
 	bool isRunning;
 	SDL_Window* window;
 	SDL_Renderer* renderer;
+	bool KeyboardDown = false;
+	SDL_Event sdlEvent;
+
+	Object player = { 100,100,20,20 };
 
 
 };
