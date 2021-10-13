@@ -106,14 +106,14 @@ void Game::Render()
 	///////////////////////////////
 	//IMMEDIATE MODE OPENGL////////
 	///////////////////////////////
-	//glEnableClientState(GL_COLOR_ARRAY);
+	glEnableClientState(GL_COLOR_ARRAY);
 
-	//glBegin(GL_TRIANGLES);
-	//glColor3f(1,0,0);
-	//glVertex2f(-1,-1);
-	//glVertex2f(0, -1);
-	//glVertex2f(0, 0);
-	//glEnd();
+	glBegin(GL_TRIANGLES);
+	glColor3f(1,0,0);
+	glVertex2f(-1,-1);
+	glVertex2f(0, -1);
+	glVertex2f(0, 0);
+	glEnd();
 
 
 	SDL_GL_SwapWindow(window);
