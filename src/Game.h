@@ -3,6 +3,8 @@
 
 #include <SDL/SDL.h>
 #include <GL/glew.h>
+#include <iostream>
+#include <string>
 
 enum class GameState
 {
