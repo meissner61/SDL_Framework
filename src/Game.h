@@ -5,6 +5,7 @@
 #include <SDL/SDL.h>
 #include <GL/glew.h>
 #include "Object.h"
+#include <vector>
 
 enum class GameState
 {
@@ -36,7 +37,12 @@ private:
 	SDL_Event sdlEvent;
 
 	Object player = { 100,100,20,20 };
+	Object objTest1;
 
+
+	//std::vector<Object> objArray;
+
+	Object objects[10];
 
 };
 

@@ -1,4 +1,5 @@
 #include "Game.h"
+#include <string>
 
 Game::Game()
 {
@@ -27,6 +28,12 @@ void Game::Initialize()
 
 	SDL_SetRenderDrawColor(renderer, 50, 50, 50, 255);
 	isRunning = true;
+
+	const char* platform;
+
+	platform = SDL_GetPlatform();
+
+	std::cout << platform;
 }
 
 void Game::Setup()
@@ -47,6 +54,8 @@ void Game::Run()
 
 void Game::Input()
 {
+	float x;
+	float y;
 	
 	while (SDL_PollEvent(&sdlEvent))
 	{
@@ -56,8 +65,19 @@ void Game::Input()
 			isRunning = false;
 			break;
 
+		case SDL_MOUSEMOTION:
+			//std::cout << sdlEvent.motion.x << ' ' << sdlEvent.motion.y << std::endl;
+			break;
+		case SDL_MOUSEBUTTONDOWN:
+			std::cout << sdlEvent.button.x << ' ' << sdlEvent.button.y << std::endl;
+			x = sdlEvent.button.x;
+			y = sdlEvent.button.y;
+			//Object obj = { x,y ,20,20};
+			//objArray.emplace_back(x,y,20,20);
+
 		}
 
+		
 	//	if (sdlEvent.type == SDL_KEYDOWN)
 	//	{
 	//		KeyboardDown = true;
@@ -90,19 +110,7 @@ void Game::Input()
 
 	}
 
-	
-
-}
-
-void Game::Update()
-{
 	const Uint8* keyState = SDL_GetKeyboardState(NULL);
-	if (keyState[SDL_SCANCODE_RETURN]) {
-		printf("<RETURN> is pressed.\n");
-	}
-	if (keyState[SDL_SCANCODE_RIGHT] && keyState[SDL_SCANCODE_UP]) {
-		printf("Right and Up Keys Pressed.\n");
-	}
 
 	if (keyState[SDL_SCANCODE_RIGHT])
 	{
@@ -112,10 +120,28 @@ void Game::Update()
 	}
 	if (keyState[SDL_SCANCODE_LEFT])
 	{
-		player.rect.x -= 0.1f;
+		player.rect.x -= player.speed;
 	}
-	//player.rect.x += 0.1f;
+	if (keyState[SDL_SCANCODE_UP])
+	{
+		player.rect.y -= player.speed;
+	}
+	if (keyState[SDL_SCANCODE_DOWN])
+	{
+		player.rect.y += player.speed;
+	}
+	
 
+}
+
+void Game::Update()
+{
+
+	
+	for (int i = 0; i < 10; i++)
+	{
+		objects[i].Update(window);
+	}
 
 
 }
@@ -126,6 +152,13 @@ void Game::Render()
 	SDL_RenderClear(renderer);
 
 	player.Draw(renderer);
+	objTest1.Draw(renderer);
+
+
+	for (int i = 0; i < 10; i++)
+	{
+		objects[i].Draw(renderer);
+	}
 
 
 	SDL_RenderPresent(renderer);
