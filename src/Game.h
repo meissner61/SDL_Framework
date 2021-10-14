@@ -4,11 +4,6 @@
 #include <SDL/SDL.h>
 #include <GL/glew.h>
 
-enum class GameState
-{
-	PLAY,
-	EXIT
-};
 
 class Game
 {
