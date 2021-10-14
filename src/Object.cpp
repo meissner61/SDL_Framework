@@ -3,16 +3,21 @@
 Object::Object()
 	:
 	rng(rd()),
-	posDist(0, 400),
-	colorDist(0, 255)
+	posDist(0, 780),
+	colorDist(0, 255),
+	velDist(-2.0, 2.0)
 {
 	rect.x = posDist(rng);
-	rect.y = posDist(rng);
-	rect.w = 20;
-	rect.h = 20;
+	rect.y = posDist(rng) - 200;
+	rect.w = 1;
+	rect.h = 1;
+
 	r = colorDist(rng);
 	g = colorDist(rng);
 	b = colorDist(rng);
+
+	velX = velDist(rng);
+	velY = velDist(rng);
 }
 
 Object::Object(float x, float y, float width, float height)
@@ -29,14 +34,14 @@ void Object::Draw(SDL_Renderer* renderer)
 	SDL_RenderFillRectF(renderer, &rect);
 }
 
-void Object::Update(SDL_Window* window)
+void Object::WallBounce(SDL_Window* window)
 {
 	if (rect.x <= 0)
 	{
 		rect.x = 1.0f;
 		(velX) *= (-1);
 	}
-	else if (rect.x >= SDL_GetWindowSurface(window)->w)
+	else if ((rect.x + rect.w) >= SDL_GetWindowSurface(window)->w)
 	{
 		rect.x = (SDL_GetWindowSurface(window)->w - rect.w);
 		(velX) *= (-1);
@@ -46,7 +51,7 @@ void Object::Update(SDL_Window* window)
 		rect.y = 1.0f;
 		(velY) *= (-1);
 	}
-	else if (rect.y >= SDL_GetWindowSurface(window)->h)
+	else if ((rect.y + rect.h) >= SDL_GetWindowSurface(window)->h)
 	{
 		rect.y = (SDL_GetWindowSurface(window)->h - rect.h);
 		(velY) *= (-1);

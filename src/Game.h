@@ -37,13 +37,18 @@ private:
 	SDL_Event sdlEvent;
 
 	Object player = { 100,100,20,20 };
-	Object objTest1;
+	//new Object objTest1;
+
+	Object* objTest1 = new Object();
+	
 
 
 	//std::vector<Object> objArray;
 
-	Object objects[10];
-
+	//HEAP allocated array of objects
+	static constexpr int OBJECTS = 100;
+	//Object objects[OBJECTS];
+	Object* objects = new Object[OBJECTS];
 };
 
 

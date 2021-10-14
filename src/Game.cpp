@@ -22,7 +22,8 @@ void Game::Initialize()
 	}
 
 	//Create Window
-	window = SDL_CreateWindow("Test Application", 500, 100, 800, 600, SDL_WINDOW_OPENGL);
+	window = SDL_CreateWindow("Test Application", 500, 100, 800, 600, SDL_WINDOW_RESIZABLE);
+	//SDL_WINDOW_OPENGL
 	//Create Renderer
 	renderer = SDL_CreateRenderer(window, -1, 1);
 
@@ -72,6 +73,7 @@ void Game::Input()
 			std::cout << sdlEvent.button.x << ' ' << sdlEvent.button.y << std::endl;
 			x = sdlEvent.button.x;
 			y = sdlEvent.button.y;
+			std::cout << "OBJ1( " << objects[1].rect.x << objects[1].rect.y << ")\n";
 			//Object obj = { x,y ,20,20};
 			//objArray.emplace_back(x,y,20,20);
 
@@ -115,7 +117,7 @@ void Game::Input()
 	if (keyState[SDL_SCANCODE_RIGHT])
 	{
 		//std::cout << "\nKeyPress: " << SDL_GetKeyName(sdlEvent.key.keysym.sym) << "\n";
-		player.rect.x += 0.1f;
+		player.rect.x += player.speed;
 
 	}
 	if (keyState[SDL_SCANCODE_LEFT])
@@ -138,9 +140,9 @@ void Game::Update()
 {
 
 	
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < OBJECTS; i++)
 	{
-		objects[i].Update(window);
+		objects[i].WallBounce(window);
 	}
 
 
@@ -152,10 +154,10 @@ void Game::Render()
 	SDL_RenderClear(renderer);
 
 	player.Draw(renderer);
-	objTest1.Draw(renderer);
+	objTest1->Draw(renderer);
 
 
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < OBJECTS; i++)
 	{
 		objects[i].Draw(renderer);
 	}
@@ -166,6 +168,12 @@ void Game::Render()
 
 void Game::Destroy()
 {
+	//ScreenShot Code
+	SDL_Surface* sshot = SDL_CreateRGBSurface(0, 800, 600, 32, 0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000);
+	SDL_RenderReadPixels(renderer, NULL, SDL_PIXELFORMAT_ARGB8888, sshot->pixels, sshot->pitch);
+	SDL_SaveBMP(sshot, "/screenshot.bmp");
+	SDL_FreeSurface(sshot);
+
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();

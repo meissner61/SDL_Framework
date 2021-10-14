@@ -9,7 +9,7 @@ public:
 	Object();
 	Object(float x, float y, float width, float height);
 	void Draw(SDL_Renderer* renderer);
-	void Update(SDL_Window* window);
+	void WallBounce(SDL_Window* window);
 
 
 public:
@@ -20,8 +20,8 @@ public:
 	SDL_FRect rect;
 
 	float speed = 0.1f;
-	float velX = 1.0f;
-	float velY = 1.0f;
+	float velX;
+	float velY;
 
 	int r = 255;
 	int g = 255;
@@ -31,6 +31,7 @@ public:
 	std::mt19937 rng;
 	std::uniform_int_distribution<int> posDist;//position distribution
 	std::uniform_int_distribution<int> colorDist;
+	std::uniform_real_distribution<float> velDist;
 
 
 	bool dead = false;
