@@ -46,7 +46,7 @@ private:
 	//std::vector<Object> objArray;
 
 	//HEAP allocated array of objects
-	static constexpr int OBJECTS = 100;
+	static constexpr int OBJECTS = 10000;
 	//Object objects[OBJECTS];
 	Object* objects = new Object[OBJECTS];
 };

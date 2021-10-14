@@ -9,8 +9,8 @@ Object::Object()
 {
 	rect.x = posDist(rng);
 	rect.y = posDist(rng) - 200;
-	rect.w = 1;
-	rect.h = 1;
+	rect.w = 5;
+	rect.h = 5;
 
 	r = colorDist(rng);
 	g = colorDist(rng);
