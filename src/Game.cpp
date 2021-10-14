@@ -79,12 +79,17 @@ void Game::Render()
 	std::uniform_int_distribution<int> g(0, 255);
 	std::uniform_int_distribution<int> b(0, 255);
 
+
+
 	for (int y = 0; y < 20; y++)
 	{
 		for (int x = 0; x < 20; x++)
 		{
+			int red = r(rng);
+			int green = g(rng);
+			int blue = b(rng);
 			Location loc = { x,y };
-			brd.DrawCell(loc, r,g,b);
+			brd.DrawCell(loc, red,green,blue);
 		}
 	}
 
