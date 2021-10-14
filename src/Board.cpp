@@ -9,12 +9,12 @@ Board::Board(SDL_Renderer** renderer)
 	rect.h = height;
 }
 
-void Board::DrawCell(Location& loc)
+void Board::DrawCell(Location& loc, int r, int g, int b)
 {
 	rect.x = loc.x;
 	rect.y = loc.y;
 
-	SDL_SetRenderDrawColor(*renderer, 255, 255, 255, 255);
+	SDL_SetRenderDrawColor(*renderer, r, g, b, 255);
 	SDL_RenderDrawRect(*renderer, &rect);
 
 }

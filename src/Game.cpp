@@ -75,9 +75,23 @@ void Game::Render()
 	SDL_SetRenderDrawColor(renderer, 50, 50, 50, 255);
 	SDL_RenderClear(renderer);
 
-	Location loc = { 10,10 };
+	std::uniform_int_distribution<int> r(0, 255);
+	std::uniform_int_distribution<int> g(0, 255);
+	std::uniform_int_distribution<int> b(0, 255);
 
-	brd.DrawCell(loc);
+	for (int y = 0; y < 20; y++)
+	{
+		for (int x = 0; x < 20; x++)
+		{
+			Location loc = { x,y };
+			brd.DrawCell(loc, r,g,b);
+		}
+	}
+
+	
+
+
+	
 
 	SDL_RenderPresent(renderer);
 }
