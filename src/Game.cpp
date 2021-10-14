@@ -1,6 +1,9 @@
 #include "Game.h"
 
 Game::Game()
+	:
+	brd(&renderer),
+	rng(std::random_device()())
 {
 	window = nullptr;
 	renderer = nullptr;
@@ -72,6 +75,9 @@ void Game::Render()
 	SDL_SetRenderDrawColor(renderer, 50, 50, 50, 255);
 	SDL_RenderClear(renderer);
 
+	Location loc = { 10,10 };
+
+	brd.DrawCell(loc);
 
 	SDL_RenderPresent(renderer);
 }

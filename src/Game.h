@@ -3,7 +3,8 @@
 
 #include <SDL/SDL.h>
 #include <GL/glew.h>
-
+#include "Board.h"
+#include <random>
 
 class Game
 {
@@ -27,6 +28,8 @@ private:
 	SDL_Renderer* renderer;
 
 
+	Board brd;
+	std::mt19937 rng;
 };
 
 
