@@ -1,4 +1,5 @@
-#pragma once
+#ifndef BOARD_H
+#define BOARD_H
 #include <SDL/SDL.h>
 #include "Location.h"
 
@@ -27,3 +28,5 @@ private:
 	SDL_Renderer** renderer;
 	//Location loc;
 };
+
+#endif

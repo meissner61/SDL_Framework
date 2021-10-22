@@ -1,4 +1,5 @@
-#pragma once
+#ifndef LOCATION_H
+#define LOCATION_h
 
 struct Location
 {
@@ -10,3 +11,5 @@ struct Location
 	int x;
 	int y;
 };
+
+#endif
