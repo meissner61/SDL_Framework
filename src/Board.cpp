@@ -9,7 +9,7 @@ Board::Board(SDL_Renderer** renderer)
 	rect.h = dimension;
 }
 
-void Board::DrawCell(Location& loc, int r, int g, int b)
+void Board::DrawCell(const Location& loc, int r, int g, int b)
 {
 	rect.x = loc.x * dimension;
 	rect.y = loc.y * dimension;
@@ -17,4 +17,14 @@ void Board::DrawCell(Location& loc, int r, int g, int b)
 	SDL_SetRenderDrawColor(*renderer, r, g, b, 255);
 	SDL_RenderFillRect(*renderer, &rect);
 
+}
+
+int Board::GetWidth()
+{
+	return width;
+}
+
+int Board::GetHeight()
+{
+	return height;
 }

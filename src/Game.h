@@ -5,6 +5,7 @@
 #include <GL/glew.h>
 #include "Board.h"
 #include <random>
+#include "Snake.h"
 
 class Game
 {
@@ -27,9 +28,12 @@ private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 
+	int moveCounter = 0;
+
 
 	Board brd;
 	std::mt19937 rng;
+	Snake snek;
 };
 
 

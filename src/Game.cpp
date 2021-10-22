@@ -3,7 +3,8 @@
 Game::Game()
 	:
 	brd(&renderer),
-	rng(std::random_device()())
+	rng(std::random_device()()),
+	snek(Location{0,0})
 {
 	window = nullptr;
 	renderer = nullptr;
@@ -67,7 +68,13 @@ void Game::Input()
 
 void Game::Update()
 {
-
+	moveCounter++;
+	if (moveCounter == 1000)
+	{
+		snek.MoveBy(Location{ 1,0 });
+		moveCounter = 0;
+	}
+	
 }
 
 void Game::Render()
@@ -75,25 +82,25 @@ void Game::Render()
 	SDL_SetRenderDrawColor(renderer, 50, 50, 50, 255);
 	SDL_RenderClear(renderer);
 
-	std::uniform_int_distribution<int> r(0, 255);
-	std::uniform_int_distribution<int> g(0, 255);
-	std::uniform_int_distribution<int> b(0, 255);
+	//std::uniform_int_distribution<int> r(0, 255);
+	//std::uniform_int_distribution<int> g(0, 255);
+	//std::uniform_int_distribution<int> b(0, 255);
 
 
 
-	for (int y = 0; y < 20; y++)
-	{
-		for (int x = 0; x < 20; x++)
-		{
-			int red = r(rng);
-			int green = g(rng);
-			int blue = b(rng);
-			Location loc = { x,y };
-			brd.DrawCell(loc, red,green,blue);
-		}
-	}
+	//for (int y = 0; y < brd.GetHeight(); y++)
+	//{
+	//	for (int x = 0; x < brd.GetWidth(); x++)
+	//	{
+	//		int red = r(rng);
+	//		int green = g(rng);
+	//		int blue = b(rng);
+	//		Location loc = { x,y };
+	//		brd.DrawCell(loc, red,green,blue);
+	//	}
+	//}
 
-	
+	snek.Draw(brd);
 
 
 	

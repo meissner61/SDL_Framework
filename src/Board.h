@@ -6,7 +6,10 @@ class Board
 {
 public:
 	Board(SDL_Renderer** renderer);
-	void DrawCell(Location& loc, int r, int g, int b);
+	void DrawCell(const Location& loc, int r, int g, int b);
+	//void DrawCell(Location& loc,) //TODO: Make a Color class for non RGB draw cell
+	int GetWidth();
+	int GetHeight();
 
 
 private:
