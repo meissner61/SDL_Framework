@@ -51,7 +51,7 @@ void Game::Run()
 
 void Game::Input()
 {
-	SDL_Event sdlEvent;
+	
 	while (SDL_PollEvent(&sdlEvent))
 	{
 		switch (sdlEvent.type)
@@ -78,10 +78,10 @@ void Game::Input()
 			{
 				delta_loc = { 0,1 };
 			}
-			else if (sdlEvent.key.keysym.sym == SDLK_SPACE)
-			{
-				snek.Grow();
-			}
+			//else if (sdlEvent.key.keysym.sym == SDLK_SPACE)
+			//{
+			//	snek.Grow();
+			//}
 		}
 	}
 
@@ -94,6 +94,15 @@ void Game::Update()
 	moveCounter++;
 	if (moveCounter >= 100)
 	{
+
+		const Uint8* keyState = SDL_GetKeyboardState(NULL);
+
+		if (keyState[SDL_SCANCODE_SPACE])
+		{
+			snek.Grow();
+		}
+
+
 		moveCounter = 0;
 		snek.MoveBy(delta_loc);
 	}

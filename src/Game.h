@@ -30,6 +30,7 @@ private:
 
 	int moveCounter = 0;
 
+	SDL_Event sdlEvent;
 
 	Board brd;
 	std::mt19937 rng;

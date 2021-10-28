@@ -20,6 +20,7 @@ void Snake::Grow()
 {
 	if (nSegments < nSegmentsMax)
 	{
+		segments[nSegments].InitBody();
 		nSegments++;
 	}
 }
