@@ -4,7 +4,7 @@ Game::Game()
 	:
 	brd(&renderer),
 	rng(std::random_device()()),
-	snek(Location{0,0})
+	snek({0,0})
 {
 	window = nullptr;
 	renderer = nullptr;
@@ -60,6 +60,25 @@ void Game::Input()
 			isRunning = false;
 			break;
 		}
+		if (sdlEvent.type == SDL_KEYDOWN)
+		{
+			if (sdlEvent.key.keysym.sym == SDLK_RIGHT)
+			{
+				delta_loc = { 1,0 };
+			}
+			else if (sdlEvent.key.keysym.sym == SDLK_LEFT)
+			{
+				delta_loc = { -1,0 };
+			}
+			else if (sdlEvent.key.keysym.sym == SDLK_UP)
+			{
+				delta_loc = { 0,-1 };
+			}
+			else if (sdlEvent.key.keysym.sym == SDLK_DOWN)
+			{
+				delta_loc = { 0,1 };
+			}
+		}
 	}
 
 
@@ -69,10 +88,10 @@ void Game::Input()
 void Game::Update()
 {
 	moveCounter++;
-	if (moveCounter == 1000)
+	if (moveCounter >= 100)
 	{
-		snek.MoveBy(Location{ 1,0 });
 		moveCounter = 0;
+		snek.MoveBy(delta_loc);
 	}
 	
 }

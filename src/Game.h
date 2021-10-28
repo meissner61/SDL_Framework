@@ -34,6 +34,8 @@ private:
 	Board brd;
 	std::mt19937 rng;
 	Snake snek;
+
+	Location delta_loc = { 1,0 };
 };
 
 
