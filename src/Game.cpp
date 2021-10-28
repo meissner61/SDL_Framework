@@ -78,6 +78,10 @@ void Game::Input()
 			{
 				delta_loc = { 0,1 };
 			}
+			else if (sdlEvent.key.keysym.sym == SDLK_SPACE)
+			{
+				snek.Grow();
+			}
 		}
 	}
 
