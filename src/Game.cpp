@@ -78,10 +78,10 @@ void Game::Input()
 			{
 				delta_loc = { 0,1 };
 			}
-			//else if (sdlEvent.key.keysym.sym == SDLK_SPACE)
-			//{
-			//	snek.Grow();
-			//}
+			else if (sdlEvent.key.keysym.sym == SDLK_p)
+			{
+				delta_loc = { 0,0 };
+			}
 		}
 	}
 
@@ -95,12 +95,15 @@ void Game::Update()
 	if (moveCounter >= 100)
 	{
 
-		const Uint8* keyState = SDL_GetKeyboardState(NULL);
-
 		if (keyState[SDL_SCANCODE_SPACE])
 		{
 			snek.Grow();
+			for (int i = 0; i < snek.GetSegments(); i++)
+			{
+				std::cout<<"Segment["<<i<<']' << snek.segments[i].loc.x <<' '<< snek.segments[i].loc.y << std::endl;
+			}
 		}
+
 
 
 		moveCounter = 0;
@@ -135,7 +138,7 @@ void Game::Render()
 	snek.Draw(brd);
 
 
-	
+	brd.DrawGrid();
 
 	SDL_RenderPresent(renderer);
 }

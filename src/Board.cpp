@@ -19,6 +19,23 @@ void Board::DrawCell(const Location& loc, int r, int g, int b)
 
 }
 
+void Board::DrawGrid()
+{
+	for (int y = 0; y < height * dimension; y++)
+	{
+		for (int x = 0; x < width * dimension; x++)
+		{
+			if (y % dimension == 0 || x % dimension == 0)
+			{
+				SDL_SetRenderDrawColor(*renderer, 255, 255, 255, 255);
+				SDL_RenderDrawPoint(*renderer, x, y);
+
+			}
+
+		}
+	}
+}
+
 int Board::GetWidth()
 {
 	return width;

@@ -33,6 +33,11 @@ void Snake::Draw(Board& brd)
 	}
 }
 
+int Snake::GetSegments()
+{
+	return nSegments;
+}
+
 void Snake::Segment::InitHead(const Location& in_loc)
 {
 	loc = in_loc;
@@ -50,11 +55,11 @@ void Snake::Segment::Follow(const Segment& next)
 
 void Snake::Segment::Draw(Board& brd)
 {
-	brd.DrawCell(loc, 0, 200, 0);
+	brd.DrawCell(loc, 0, 100, 0);
 }
 
 void Snake::Segment::MoveBy(const Location& delta_loc)
 {
-	assert(abs(delta_loc.x) + abs(delta_loc.y) == 1);
+	//assert(abs(delta_loc.x) + abs(delta_loc.y) == 1);
 	loc.Add(delta_loc);
 }

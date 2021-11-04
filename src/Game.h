@@ -1,11 +1,12 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <SDL/SDL.h>
+#include <SDL2/SDL.h>
 #include <GL/glew.h>
 #include "Board.h"
 #include <random>
 #include "Snake.h"
+#include <iostream>
 
 class Game
 {
@@ -31,6 +32,7 @@ private:
 	int moveCounter = 0;
 
 	SDL_Event sdlEvent;
+	const Uint8* keyState = SDL_GetKeyboardState(NULL);
 
 	Board brd;
 	std::mt19937 rng;

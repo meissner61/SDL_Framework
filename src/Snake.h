@@ -5,7 +5,7 @@
 
 class Snake
 {
-private:
+public:
 	class Segment
 	{
 	public:
@@ -14,7 +14,7 @@ private:
 		void Follow(const Segment& next);
 		void Draw(Board& brd);
 		void MoveBy(const Location& delta_loc);
-	private:
+	public:
 		Location loc;
 
 	};
@@ -23,9 +23,10 @@ public:
 	void MoveBy(const Location& delta_loc);
 	void Grow();
 	void Draw(Board& brd);
+	int GetSegments();
 
 
-private:
+public:
 	static constexpr int nSegmentsMax = 100;
 	Segment segments[nSegmentsMax];
 	int  nSegments = 1;
