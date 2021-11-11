@@ -46,9 +46,9 @@ private:
 	//std::vector<Object> objArray;
 
 	//HEAP allocated array of objects
-	static constexpr int OBJECTS = 10000;
+	static constexpr int OBJECTS_AMOUNT = 100;
 	//Object objects[OBJECTS];
-	Object* objects = new Object[OBJECTS];
+	Object* objects = new Object[OBJECTS_AMOUNT];
 };
 
 
