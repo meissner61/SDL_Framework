@@ -2,12 +2,14 @@
 #define BOARD_H
 #include <SDL2/SDL.h>
 #include "Location.h"
+#include "Colors.h"
 
 class Board
 {
 public:
 	Board(SDL_Renderer** renderer);
 	void DrawCell(const Location& loc, int r, int g, int b);
+	void DrawCell(const Location& loc, Colors color);
 	//void DrawCell(Location& loc,) //TODO: Make a Color class for non RGB draw cell
 	void DrawGrid() const;
 	int GetWidth() const;

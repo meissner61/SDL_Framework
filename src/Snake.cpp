@@ -62,12 +62,14 @@ bool Snake::IsInTileExceptEnd(const Location& target) const
 
 void Snake::Segment::InitHead(const Location& in_loc)
 {
+	//TODO add head color
+	color = {255, 255, 0};
 	loc = in_loc;
 }
 
 void Snake::Segment::InitBody()
 {
-	//TODO
+	//TODO add body color
 }
 
 void Snake::Segment::Follow(const Segment& next)
@@ -77,7 +79,10 @@ void Snake::Segment::Follow(const Segment& next)
 
 void Snake::Segment::Draw(Board& brd)
 {
-	brd.DrawCell(loc, 0, 100, 0);
+
+	//brd.DrawCell(loc, 0, 100, 0);
+	brd.DrawCell(loc, color);
+
 }
 
 void Snake::Segment::MoveBy(const Location& delta_loc)

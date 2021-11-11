@@ -149,6 +149,7 @@
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Colors.h" />
     <ClInclude Include="src\Snake.h" />
     <ClInclude Include="src\Board.h" />
     <ClInclude Include="src\Game.h" />

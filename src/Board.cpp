@@ -19,6 +19,15 @@ void Board::DrawCell(const Location& loc, int r, int g, int b)
 
 }
 
+void Board::DrawCell(const Location& loc, Colors color)
+{
+	rect.x = loc.x * dimension;
+	rect.y = loc.y * dimension;
+
+	SDL_SetRenderDrawColor(*renderer, color.red, color.green, color.blue, 255);
+	SDL_RenderFillRect(*renderer, &rect);
+}
+
 void Board::DrawGrid() const
 {
 	for (int y = offsetY * dimension; y <= (height+ offsetY) * dimension; y++)

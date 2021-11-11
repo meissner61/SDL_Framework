@@ -2,6 +2,7 @@
 #define SNAKE_H
 
 #include "Board.h"
+#include "Colors.h"
 
 class Snake
 {
@@ -17,6 +18,7 @@ public:
 		const Location& GetLocation() const;
 	private:
 		Location loc;
+		Colors color = { 0,255,0 };
 
 	};
 public:
