@@ -18,7 +18,7 @@ public:
 		const Location& GetLocation() const;
 	private:
 		Location loc;
-		Colors color = { 0,255,0 };
+		Color color = { 0,255,0 };
 
 	};
 public:

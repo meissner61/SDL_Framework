@@ -19,7 +19,7 @@ void Board::DrawCell(const Location& loc, int r, int g, int b)
 
 }
 
-void Board::DrawCell(const Location& loc, Colors color)
+void Board::DrawCell(const Location& loc, Color color)
 {
 	rect.x = loc.x * dimension;
 	rect.y = loc.y * dimension;
