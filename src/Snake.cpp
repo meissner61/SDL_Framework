@@ -45,6 +45,21 @@ int Snake::GetSegments()
 	return nSegments;
 }
 
+//Bug here Where if the snake is about to hit the last tail segment which will move on the next frame it still considers it a collision
+//Fix is to not check the last tail segment
+bool Snake::IsInTileExceptEnd(const Location& target) const
+{
+	for (int i = 0; i < nSegments-1; i++)
+	{
+		if (segments[i].GetLocation() == target)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
 void Snake::Segment::InitHead(const Location& in_loc)
 {
 	loc = in_loc;
@@ -71,7 +86,7 @@ void Snake::Segment::MoveBy(const Location& delta_loc)
 	loc.Add(delta_loc);
 }
 
-Location Snake::Segment::GetLocation() const
+const Location& Snake::Segment::GetLocation() const
 {
 	return loc;
 }

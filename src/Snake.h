@@ -14,8 +14,8 @@ public:
 		void Follow(const Segment& next);
 		void Draw(Board& brd);
 		void MoveBy(const Location& delta_loc);
-		Location GetLocation() const;
-	public:
+		const Location& GetLocation() const;
+	private:
 		Location loc;
 
 	};
@@ -26,6 +26,8 @@ public:
 	void Grow();
 	void Draw(Board& brd);
 	int GetSegments();
+	bool IsInTileExceptEnd( const Location& target) const;
+
 
 
 public:

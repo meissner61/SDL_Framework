@@ -97,7 +97,9 @@ void Game::Update()
 		moveCounter++;
 		if (moveCounter >= 100)
 		{
-			if (!brd.IsInsideBoard(snek.GetNextHeadLocation(delta_loc)))
+
+			Location next = snek.GetNextHeadLocation(delta_loc);
+			if (!brd.IsInsideBoard(next) || snek.IsInTileExceptEnd(next) )
 			{
 				gameIsOver = true;
 			}
@@ -109,19 +111,14 @@ void Game::Update()
 					snek.Grow();
 					for (int i = 0; i < snek.GetSegments(); i++)
 					{
-						std::cout<<"Segment["<<i<<']' << snek.segments[i].loc.x <<' '<< snek.segments[i].loc.y << std::endl;
+						std::cout<<"Segment["<<i<<']' << snek.segments[i].GetLocation().x <<' '<< snek.segments[i].GetLocation().y << std::endl;
 					}
 				}
-
-
 
 				moveCounter = 0;
 				snek.MoveBy(delta_loc);
 
-			}
-
-
-		
+			}		
 		}
 	}
 	
