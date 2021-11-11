@@ -140,7 +140,7 @@ void Game::Update()
 {
 
 	
-	for (int i = 0; i < OBJECTS; i++)
+	for (int i = 0; i < OBJECTS_AMOUNT; i++)
 	{
 		objects[i].WallBounce(window);
 	}
@@ -157,7 +157,7 @@ void Game::Render()
 	objTest1->Draw(renderer);
 
 
-	for (int i = 0; i < OBJECTS; i++)
+	for (int i = 0; i < OBJECTS_AMOUNT; i++)
 	{
 		objects[i].Draw(renderer);
 	}
