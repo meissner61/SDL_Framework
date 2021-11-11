@@ -29,6 +29,8 @@ private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 
+	bool gameIsOver = false;
+
 	int moveCounter = 0;
 
 	SDL_Event sdlEvent;

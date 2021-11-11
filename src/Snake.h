@@ -14,6 +14,7 @@ public:
 		void Follow(const Segment& next);
 		void Draw(Board& brd);
 		void MoveBy(const Location& delta_loc);
+		Location GetLocation() const;
 	public:
 		Location loc;
 
@@ -21,6 +22,7 @@ public:
 public:
 	Snake(const Location& loc);
 	void MoveBy(const Location& delta_loc);
+	Location GetNextHeadLocation(const Location& delta_loc) const;
 	void Grow();
 	void Draw(Board& brd);
 	int GetSegments();

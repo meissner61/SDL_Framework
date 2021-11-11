@@ -4,7 +4,7 @@ Game::Game()
 	:
 	brd(&renderer),
 	rng(std::random_device()()),
-	snek({0,0})
+	snek({10,10})
 {
 	window = nullptr;
 	renderer = nullptr;
@@ -80,7 +80,7 @@ void Game::Input()
 			}
 			else if (sdlEvent.key.keysym.sym == SDLK_p)
 			{
-				delta_loc = { 0,0 };
+				delta_loc = { 0,0 }; //TODO: NO GOOD
 			}
 		}
 	}
@@ -91,23 +91,38 @@ void Game::Input()
 
 void Game::Update()
 {
-	moveCounter++;
-	if (moveCounter >= 100)
+	if (!gameIsOver)
 	{
 
-		if (keyState[SDL_SCANCODE_SPACE])
+		moveCounter++;
+		if (moveCounter >= 100)
 		{
-			snek.Grow();
-			for (int i = 0; i < snek.GetSegments(); i++)
+			if (!brd.IsInsideBoard(snek.GetNextHeadLocation(delta_loc)))
 			{
-				std::cout<<"Segment["<<i<<']' << snek.segments[i].loc.x <<' '<< snek.segments[i].loc.y << std::endl;
+				gameIsOver = true;
 			}
+
+			else
+			{
+				if (keyState[SDL_SCANCODE_SPACE])
+				{
+					snek.Grow();
+					for (int i = 0; i < snek.GetSegments(); i++)
+					{
+						std::cout<<"Segment["<<i<<']' << snek.segments[i].loc.x <<' '<< snek.segments[i].loc.y << std::endl;
+					}
+				}
+
+
+
+				moveCounter = 0;
+				snek.MoveBy(delta_loc);
+
+			}
+
+
+		
 		}
-
-
-
-		moveCounter = 0;
-		snek.MoveBy(delta_loc);
 	}
 	
 }

@@ -19,11 +19,11 @@ void Board::DrawCell(const Location& loc, int r, int g, int b)
 
 }
 
-void Board::DrawGrid()
+void Board::DrawGrid() const
 {
-	for (int y = 0; y < height * dimension; y++)
+	for (int y = offsetY * dimension; y <= (height+ offsetY) * dimension; y++)
 	{
-		for (int x = 0; x < width * dimension; x++)
+		for (int x = offsetX * dimension; x <= (width + offsetX) * dimension; x++)
 		{
 			if (y % dimension == 0 || x % dimension == 0)
 			{
@@ -36,12 +36,18 @@ void Board::DrawGrid()
 	}
 }
 
-int Board::GetWidth()
+int Board::GetWidth() const
 {
 	return width;
 }
 
-int Board::GetHeight()
+int Board::GetHeight() const
 {
 	return height;
+}
+
+bool Board::IsInsideBoard(const Location& loc) const
+{
+	return loc.x >= offsetX && loc.x < width+offsetX
+			&& loc.y >= offsetY && loc.y < height+offsetY;
 }

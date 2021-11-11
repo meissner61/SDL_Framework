@@ -9,9 +9,10 @@ public:
 	Board(SDL_Renderer** renderer);
 	void DrawCell(const Location& loc, int r, int g, int b);
 	//void DrawCell(Location& loc,) //TODO: Make a Color class for non RGB draw cell
-	void DrawGrid();
-	int GetWidth();
-	int GetHeight();
+	void DrawGrid() const;
+	int GetWidth() const;
+	int GetHeight() const;
+	bool IsInsideBoard(const Location& loc) const;
 
 
 private:
@@ -19,6 +20,8 @@ private:
 	static constexpr int dimension = 20;
 	static constexpr int width = 20;
 	static constexpr int height = 20;
+	static constexpr int offsetX = 10;
+	static constexpr int offsetY = 5;
 
 	int r = 255;
 	int g = 0;
