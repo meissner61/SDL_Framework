@@ -4,7 +4,7 @@ Game::Game()
 	:
 	brd(&renderer),
 	rng(std::random_device()()),
-	snek({10,10})
+	snek({15,10})
 {
 	window = nullptr;
 	renderer = nullptr;
