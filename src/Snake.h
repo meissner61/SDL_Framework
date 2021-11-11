@@ -2,7 +2,7 @@
 #define SNAKE_H
 
 #include "Board.h"
-#include "Colors.h"
+#include "Color.h"
 
 class Snake
 {

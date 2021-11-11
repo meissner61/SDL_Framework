@@ -2,7 +2,7 @@
 #define BOARD_H
 #include <SDL2/SDL.h>
 #include "Location.h"
-#include "Colors.h"
+#include "Color.h"
 
 class Board
 {
