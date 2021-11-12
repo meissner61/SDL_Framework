@@ -30,19 +30,39 @@ void Board::DrawCell(const Location& loc, Color color)
 
 void Board::DrawGrid() const
 {
-	for (int y = offsetY * dimension; y <= (height+ offsetY) * dimension; y++)
+	//for (int y = offsetY * dimension; y <= (height+ offsetY) * dimension; y++)
+	//{
+	//	for (int x = offsetX * dimension; x <= (width + offsetX) * dimension; x++)
+	//	{
+	//		if (y % dimension == 0 || x % dimension == 0)
+	//		{
+	//			SDL_SetRenderDrawColor(*renderer, 255, 255, 255, 255);
+	//			SDL_RenderDrawPoint(*renderer, x, y);
+
+	//		}
+
+	//		//if (y % dimension == 0 || x % dimension == 0)
+	//		//{
+	//		//	SDL_SetRenderDrawColor(*renderer, 255, 255, 255, 255);
+	//		//	SDL_RenderDrawLine(*renderer, x, y, (x*dimension)*width, y * dimension * height);
+	//		//}
+
+	//	}
+	//}
+
+	SDL_SetRenderDrawColor(*renderer, 255, 255, 255, 255);
+
+	for (int y = dimension * offsetY; y <= (dimension + offsetY) * height; y += dimension)
 	{
-		for (int x = offsetX * dimension; x <= (width + offsetX) * dimension; x++)
+
+		SDL_RenderDrawLine(*renderer, dimension * offsetX, y, (dimension + offsetX) * width, y);
+		for (int x = dimension * offsetX; x <= (dimension + offsetX) * width; x += dimension)
 		{
-			if (y % dimension == 0 || x % dimension == 0)
-			{
-				SDL_SetRenderDrawColor(*renderer, 255, 255, 255, 255);
-				SDL_RenderDrawPoint(*renderer, x, y);
-
-			}
-
+			SDL_RenderDrawLine(*renderer, x, dimension * offsetY, x, (dimension + offsetY) * height);
 		}
 	}
+
+
 }
 
 int Board::GetWidth() const
