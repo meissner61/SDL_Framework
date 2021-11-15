@@ -6,6 +6,7 @@
 #include "Board.h"
 #include <random>
 #include "Snake.h"
+#include "Goal.h"
 #include <iostream>
 
 class Game
@@ -41,6 +42,8 @@ private:
 	Snake snek;
 
 	Location delta_loc = { 1,0 };
+	//Goal needs to be added after board and snek because they are used to initialize the Goal
+	Goal goal;
 };
 
 

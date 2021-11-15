@@ -60,6 +60,19 @@ bool Snake::IsInTileExceptEnd(const Location& target) const
 	return false;
 }
 
+bool Snake::IsInTile(const Location& target) const
+{
+	for (int i = 0; i < nSegments; i++)
+	{
+		if (segments[i].GetLocation() == target)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
 void Snake::Segment::InitHead(const Location& in_loc)
 {
 	//TODO add head color

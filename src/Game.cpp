@@ -4,7 +4,8 @@ Game::Game()
 	:
 	brd(&renderer),
 	rng(std::random_device()()),
-	snek({15,10})
+	snek({15,10}),
+	goal(rng,brd,snek)
 {
 	window = nullptr;
 	renderer = nullptr;
@@ -35,6 +36,8 @@ void Game::Initialize()
 
 void Game::Setup()
 {
+
+	std::cout<<"Size of is: "<<sizeof(Snake);
 
 }
 
@@ -95,7 +98,7 @@ void Game::Update()
 	{
 
 		moveCounter++;
-		if (moveCounter >= 100)
+		if (moveCounter >= 400)
 		{
 
 			Location next = snek.GetNextHeadLocation(delta_loc);
@@ -106,17 +109,29 @@ void Game::Update()
 
 			else
 			{
-				if (keyState[SDL_SCANCODE_SPACE])
+				////////////////////Debug snake Growing code///////////////////////
+				//if (keyState[SDL_SCANCODE_SPACE])
+				//{
+				//	snek.Grow();
+				//	for (int i = 0; i < snek.GetSegments(); i++)
+				//	{
+				//		std::cout<<"Segment["<<i<<']' << snek.segments[i].GetLocation().x <<' '<< snek.segments[i].GetLocation().y << std::endl;
+				//	}
+				//}
+				///////////////////////////////////////////////////////////////////
+
+				const bool eating = next == goal.GetLocation();
+				if (eating)
 				{
 					snek.Grow();
-					for (int i = 0; i < snek.GetSegments(); i++)
-					{
-						std::cout<<"Segment["<<i<<']' << snek.segments[i].GetLocation().x <<' '<< snek.segments[i].GetLocation().y << std::endl;
-					}
-				}
 
+				}
 				moveCounter = 0;
 				snek.MoveBy(delta_loc);
+				if (eating)
+				{
+					goal.Respawn(rng, brd, snek);
+				}
 
 			}		
 		}
@@ -148,6 +163,7 @@ void Game::Render()
 	//}
 
 	snek.Draw(brd);
+	goal.Draw(brd);
 
 
 	brd.DrawGrid();

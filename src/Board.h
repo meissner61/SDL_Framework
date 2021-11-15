@@ -15,6 +15,8 @@ public:
 	int GetWidth() const;
 	int GetHeight() const;
 	bool IsInsideBoard(const Location& loc) const;
+	int GetOffSetX() const;
+	int GetOffSetY() const;
 
 
 private:
@@ -22,7 +24,7 @@ private:
 	static constexpr int dimension = 20;
 	static constexpr int width = 20;
 	static constexpr int height = 20;
-	static constexpr int offsetX = 5;
+	static constexpr int offsetX = 10;
 	static constexpr int offsetY = 5;
 
 	int r = 255;

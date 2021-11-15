@@ -41,12 +41,6 @@ void Board::DrawGrid() const
 
 	//		}
 
-	//		//if (y % dimension == 0 || x % dimension == 0)
-	//		//{
-	//		//	SDL_SetRenderDrawColor(*renderer, 255, 255, 255, 255);
-	//		//	SDL_RenderDrawLine(*renderer, x, y, (x*dimension)*width, y * dimension * height);
-	//		//}
-
 	//	}
 	//}
 
@@ -79,4 +73,14 @@ bool Board::IsInsideBoard(const Location& loc) const
 {
 	return loc.x >= offsetX && loc.x < width+offsetX
 			&& loc.y >= offsetY && loc.y < height+offsetY;
+}
+
+int Board::GetOffSetX() const
+{
+	return offsetX;
+}
+
+int Board::GetOffSetY() const
+{
+	return offsetY;
 }

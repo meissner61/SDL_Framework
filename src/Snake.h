@@ -29,6 +29,7 @@ public:
 	void Draw(Board& brd);
 	int GetSegments();
 	bool IsInTileExceptEnd( const Location& target) const;
+	bool IsInTile(const Location& target) const;
 
 
 
