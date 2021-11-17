@@ -38,9 +38,7 @@ void Board::DrawGrid() const
 	//		{
 	//			SDL_SetRenderDrawColor(*renderer, 255, 255, 255, 255);
 	//			SDL_RenderDrawPoint(*renderer, x, y);
-
 	//		}
-
 	//	}
 	//}
 

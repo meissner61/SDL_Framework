@@ -109,16 +109,7 @@ void Game::Update()
 
 			else
 			{
-				////////////////////Debug snake Growing code///////////////////////
-				//if (keyState[SDL_SCANCODE_SPACE])
-				//{
-				//	snek.Grow();
-				//	for (int i = 0; i < snek.GetSegments(); i++)
-				//	{
-				//		std::cout<<"Segment["<<i<<']' << snek.segments[i].GetLocation().x <<' '<< snek.segments[i].GetLocation().y << std::endl;
-				//	}
-				//}
-				///////////////////////////////////////////////////////////////////
+
 
 				const bool eating = next == goal.GetLocation();
 				if (eating)
@@ -144,28 +135,8 @@ void Game::Render()
 	SDL_SetRenderDrawColor(renderer, 50, 50, 50, 255);
 	SDL_RenderClear(renderer);
 
-	//std::uniform_int_distribution<int> r(0, 255);
-	//std::uniform_int_distribution<int> g(0, 255);
-	//std::uniform_int_distribution<int> b(0, 255);
-
-
-
-	//for (int y = 0; y < brd.GetHeight(); y++)
-	//{
-	//	for (int x = 0; x < brd.GetWidth(); x++)
-	//	{
-	//		int red = r(rng);
-	//		int green = g(rng);
-	//		int blue = b(rng);
-	//		Location loc = { x,y };
-	//		brd.DrawCell(loc, red,green,blue);
-	//	}
-	//}
-
 	snek.Draw(brd);
 	goal.Draw(brd);
-
-
 	brd.DrawGrid();
 
 	SDL_RenderPresent(renderer);
@@ -177,3 +148,36 @@ void Game::Destroy()
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 }
+
+/////////////////////////////////////////////////////////////////
+/////////			DEBUGING CODE					/////////////
+
+////////////////////Debug snake Growing code///////////////////////
+//if (keyState[SDL_SCANCODE_SPACE])
+//{
+//	snek.Grow();
+//	for (int i = 0; i < snek.GetSegments(); i++)
+//	{
+//		std::cout<<"Segment["<<i<<']' << snek.segments[i].GetLocation().x <<' '<< snek.segments[i].GetLocation().y << std::endl;
+//	}
+//}
+///////////////////////////////////////////////////////////////////
+
+
+
+//////////////////DISCO BOARD CODE TEST///////////////////////////
+//std::uniform_int_distribution<int> r(0, 255);
+//std::uniform_int_distribution<int> g(0, 255);
+//std::uniform_int_distribution<int> b(0, 255);
+
+//for (int y = 0; y < brd.GetHeight(); y++)
+//{
+//	for (int x = 0; x < brd.GetWidth(); x++)
+//	{
+//		int red = r(rng);
+//		int green = g(rng);
+//		int blue = b(rng);
+//		Location loc = { x,y };
+//		brd.DrawCell(loc, red,green,blue);
+//	}
+//}
