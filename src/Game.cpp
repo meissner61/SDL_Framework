@@ -25,6 +25,11 @@ void Game::Initialize()
 	//Create Renderer
 	renderer = SDL_CreateRenderer(window, -1, 1);
 
+	surface = IMG_Load("TileSet_V2.png");
+	texture = SDL_CreateTextureFromSurface(renderer, surface);
+	SDL_FreeSurface(surface);
+
+
 	SDL_SetRenderDrawColor(renderer, 50, 50, 50, 255);
 	isRunning = true;
 }
@@ -71,6 +76,20 @@ void Game::Render()
 {
 	SDL_SetRenderDrawColor(renderer, 50, 50, 50, 255);
 	SDL_RenderClear(renderer);
+
+	SDL_Rect srcRect;
+	srcRect.x = 0;
+	srcRect.y = 0;
+	srcRect.w = 144;
+	srcRect.h = 48;
+
+	SDL_Rect destination;
+	destination.x = 100;
+	destination.y = 100;
+	destination.w = 288;
+	destination.h = 96;
+
+	SDL_RenderCopy(renderer, texture, &srcRect, &destination);
 
 
 	SDL_RenderPresent(renderer);
