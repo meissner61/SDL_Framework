@@ -2,6 +2,7 @@
 #include <iostream>
 
 Game::Game()
+	:numList(100)
 {
 	window = nullptr;
 	renderer = nullptr;
@@ -32,6 +33,7 @@ void Game::Initialize()
 
 void Game::Setup()
 {
+	BadRandom(numList);
 
 }
 
@@ -63,6 +65,11 @@ void Game::Input()
 				int width = 0;
 				width = SDL_GetWindowSurface(window)->w;
 				std::cout << width << "\n";
+
+				for (int i = 0; i < numList.size() - 1; i++)
+				{
+					std::cout << numList[i] << std::endl;
+				}
 			}
 		}
 	}
@@ -90,4 +97,20 @@ void Game::Destroy()
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
+}
+
+void Game::BadRandom(std::vector<int>& numList)
+{
+
+	srand(time(NULL));
+
+	for (int i = 0; i < numList.size() - 1; i++)
+	{
+		numList[i] = rand() % 1000;
+	}
+}
+
+void Game::DrawRandomList(std::vector<int>& numList)
+{
+	
 }
