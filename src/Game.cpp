@@ -1,4 +1,5 @@
 #include "Game.h"
+#include <iostream>
 
 Game::Game()
 {
@@ -21,7 +22,7 @@ void Game::Initialize()
 	}
 
 	//Create Window
-	window = SDL_CreateWindow("Test Application", 100, 100, 800, 600, SDL_WINDOW_OPENGL);
+	window = SDL_CreateWindow("Test Application", 100, 100, 800, 600, SDL_WINDOW_RESIZABLE);
 	//Create Renderer
 	renderer = SDL_CreateRenderer(window, -1, 1);
 
@@ -55,6 +56,14 @@ void Game::Input()
 		case SDL_QUIT:
 			isRunning = false;
 			break;
+
+		case SDL_KEYDOWN:
+			if (sdlEvent.key.keysym.sym == SDLK_SPACE)
+			{
+				int width = 0;
+				width = SDL_GetWindowSurface(window)->w;
+				std::cout << width << "\n";
+			}
 		}
 	}
 
