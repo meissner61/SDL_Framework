@@ -24,6 +24,7 @@ public:
 	void Destroy();
 	void BadRandom(std::vector<int> &numList);
 	void DrawRandomList(std::vector<int>& numList);
+	void DrawGrid() const;
 
 
 

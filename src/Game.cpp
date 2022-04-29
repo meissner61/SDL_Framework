@@ -35,6 +35,11 @@ void Game::Setup()
 {
 	BadRandom(numList);
 
+	for (int i = 0; i < numList.size() - 1; i++)
+	{
+		std::cout << numList[i] << "\n";
+	}
+
 }
 
 void Game::Run()
@@ -87,6 +92,7 @@ void Game::Render()
 {
 	SDL_SetRenderDrawColor(renderer, 50, 50, 50, 255);
 	SDL_RenderClear(renderer);
+	DrawGrid();
 
 	DrawRandomList(numList);
 
@@ -129,4 +135,39 @@ void Game::DrawRandomList(std::vector<int>& numList)
 	}
 
 	
+}
+
+void Game::DrawGrid() const
+{
+	static int dimension = 10;
+	static int height = 200;
+	static int width = 200;
+	static int offsetX = 0;
+	static int offsetY = 0;
+
+	//for (int y = offsetY * dimension; y <= (height+ offsetY) * dimension; y++)
+	//{
+	//	for (int x = offsetX * dimension; x <= (width + offsetX) * dimension; x++)
+	//	{
+	//		if (y % dimension == 0 || x % dimension == 0)
+	//		{
+	//			SDL_SetRenderDrawColor(*renderer, 255, 255, 255, 255);
+	//			SDL_RenderDrawPoint(*renderer, x, y);
+	//		}
+	//	}
+	//}
+
+	SDL_SetRenderDrawColor(renderer, 75, 75, 75, 255);
+
+	for (int y = dimension * offsetY; y <= (dimension + offsetY) * height; y += dimension)
+	{
+
+		SDL_RenderDrawLine(renderer, dimension * offsetX, y, (dimension + offsetX) * width, y);
+		for (int x = dimension * offsetX; x <= (dimension + offsetX) * width; x += dimension)
+		{
+			SDL_RenderDrawLine(renderer, x, dimension * offsetY, x, (dimension + offsetY) * height);
+		}
+	}
+
+
 }
