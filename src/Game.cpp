@@ -88,6 +88,8 @@ void Game::Render()
 	SDL_SetRenderDrawColor(renderer, 50, 50, 50, 255);
 	SDL_RenderClear(renderer);
 
+	DrawRandomList(numList);
+
 
 	SDL_RenderPresent(renderer);
 }
@@ -106,11 +108,25 @@ void Game::BadRandom(std::vector<int>& numList)
 
 	for (int i = 0; i < numList.size() - 1; i++)
 	{
-		numList[i] = rand() % 1000;
+		numList[i] = rand() % 100;
 	}
 }
 
 void Game::DrawRandomList(std::vector<int>& numList)
 {
+
+	static int offset = 5;
+	static int width = 5;
+	static int height = 10;
+
+
+	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+	
+
+	for (int i = 0; i < numList.size() - 1; i++)
+	{
+		SDL_RenderDrawLine(renderer, offset+ (i *width), 0, offset + (i * width), numList[i] * 10);
+	}
+
 	
 }
